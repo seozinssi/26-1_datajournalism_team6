@@ -1,0 +1,73 @@
+/* 기본 이미지 설정 */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 본문 전체 폭 */
+.article {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* 일반 사진 크기 */
+figure {
+  max-width: 760px;
+  margin: 40px auto;
+}
+
+/* 넓게 보여줄 사진도 너무 커지지 않게 제한 */
+.wide-figure {
+  max-width: 900px;
+  width: calc(100% - 40px);
+  margin: 50px auto;
+}
+
+/* 사진 안의 이미지 */
+.wide-figure img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* 첫 화면 대표 이미지 */
+.hero-image {
+  max-width: 980px;
+  width: calc(100% - 40px);
+  margin: 40px auto;
+}
+
+.hero-image img {
+  width: 100%;
+  max-height: 560px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* 그래픽 이미지는 조금 더 작게 */
+.graphic-figure {
+  max-width: 850px;
+  width: calc(100% - 40px);
+  margin: 50px auto;
+}
+
+.graphic-figure img {
+  width: 100%;
+  height: auto;
+}
+
+/* 모바일 */
+@media (max-width: 768px) {
+  .wide-figure,
+  .hero-image,
+  .graphic-figure {
+    width: calc(100% - 28px);
+    max-width: none;
+  }
+
+  .hero-image img {
+    max-height: 420px;
+  }
+}
