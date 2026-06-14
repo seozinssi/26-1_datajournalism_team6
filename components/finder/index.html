@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#ffffff" />
+  <title>우리 동네 화장시설 거리·이용료 조회</title>
+
+  <link rel="stylesheet" href="./style.css?v=20260614-2" />
+  <link rel="stylesheet" href="./theme.css?v=20260614-9" />
+</head>
+
+<body>
+  <main class="interactive" aria-label="우리 동네 화장시설 거리·이용료 조회 인터랙티브">
+    <header class="interactive-header">
+      <div>
+        <h1>우리 동네 화장시설 거리·이용료 조회</h1>
+        <p class="description">
+          거주 지역을 선택하면 해당 지역에서 이용 가능한 화장시설과 거리, 관내·관외 적용 여부 및 이용료를 확인할 수 있습니다.
+        </p>
+      </div>
+    </header>
+
+    <section class="search-section" aria-label="거주 지역 선택">
+      <div class="region-select-grid">
+        <label class="region-field" for="sidoSelect">
+          <span>시·도</span>
+          <select id="sidoSelect">
+            <option value="">시·도 선택</option>
+          </select>
+        </label>
+
+        <label class="region-field" for="sigunguSelect">
+          <span>시·군·구</span>
+          <select id="sigunguSelect" disabled>
+            <option value="">시·군·구 선택</option>
+          </select>
+        </label>
+
+        <label class="region-field" for="emdSelect">
+          <span>읍·면·동</span>
+          <select id="emdSelect" disabled>
+            <option value="">읍·면·동 선택</option>
+          </select>
+        </label>
+      </div>
+
+      <button id="searchButton" class="region-submit" type="button" disabled>
+        가까운 화장장 확인
+      </button>
+    </section>
+
+    <p id="errorMessage" class="error-message" role="alert"></p>
+
+    <section id="resultSection" class="result-section hidden" aria-live="polite">
+      <div class="result-header">
+        <div>
+          <p class="result-label neighborhood-label">우리 동네</p>
+          <h2 id="regionName"></h2>
+        </div>
+        <span class="result-badge">직선거리 기준</span>
+      </div>
+
+      <article class="primary-result">
+        <div>
+          <p class="nearest-label">가장 가까운 화장장</p>
+          <strong id="nearestFacility"></strong>
+        </div>
+        <div class="primary-distance">
+          <span>이동 거리</span>
+          <strong id="distance"></strong>
+        </div>
+      </article>
+
+      <div class="metric-grid">
+        <article class="metric-card">
+          <p>지역 내 화장시설</p>
+          <strong id="facilityCount"></strong>
+        </article>
+
+        <article class="metric-card grade-card">
+          <p>접근성 등급</p>
+          <strong id="grade"></strong>
+        </article>
+      </div>
+
+      <div id="feeSummary" class="fee-summary hidden">
+        <div class="fee-heading">
+          <span class="fee-label">예상 화장 비용</span>
+          <span id="feeType" class="fee-type"></span>
+        </div>
+        <strong id="applicableFee"></strong>
+        <p id="feeComparison"></p>
+        <p id="feeSource" class="fee-source"></p>
+      </div>
+
+      <div class="comment-box">
+        <span aria-hidden="true">i</span>
+        <p id="comment" class="comment"></p>
+      </div>
+
+      <details class="facility-section">
+        <summary>
+          <span>시설 상세 정보</span>
+          <span class="summary-action">펼쳐보기</span>
+        </summary>
+        <div id="facilityList" class="facility-list"></div>
+      </details>
+    </section>
+
+    <aside class="methodology" aria-label="데이터 출처 및 기준">
+      <details>
+        <summary>데이터 출처와 산정 기준</summary>
+        <div class="methodology-content">
+          <p><b>데이터 업데이트</b> 2026년 6월 14일</p>
+          <p><b>시설 현황</b> 보건복지부 e보건복지현황 전국 화장시설 현황</p>
+          <p><b>행정구역·중심점</b> 국토지리정보원 2023년 9월 법정 읍·면·동 경계의 면적 가중 중심점</p>
+          <p><b>요금</b> 각 지방자치단체 및 시설공단 공개 사용료 중 일반 성인 시신 기준</p>
+          <p><b>공동·협약 관할</b> 서울시립승화원의 고양시·파주시 주민과 공동 화장시설 참여 지자체 주민은 관내로 산정</p>
+          <p><b>거리</b> 읍·면·동 중심점과 화장시설 주소가 속한 읍·면·동 중심점 사이의 직선거리</p>
+          <p><b>접근성 등급</b> 20km 이하는 ‘보통’, 20km 초과~40km 이하는 ‘취약’, 40km 초과는 ‘매우 취약’</p>
+          <p class="caution">
+            시설의 정확한 위치나 실제 자동차 이동거리와 차이가 있으며, 실제 요금은 거주 요건과 감면 대상에 따라 달라질 수 있습니다.
+          </p>
+        </div>
+      </details>
+    </aside>
+  </main>
+
+  <script src="./script.js?v=20260614-3"></script>
+</body>
+</html>
